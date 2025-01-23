@@ -129,7 +129,7 @@ export default function Home() {
           <div className="relative rounded-xl overflow-hidden h-[400px] bg-gray-100">
             <div className="absolute inset-0">
               <Image 
-                src={activeHouse.images[0][currentImageIndex]} 
+                src={activeHouse.images[currentImageIndex]} 
                 alt={activeHouse.title}
                 layout="fill"
                 objectFit="cover"
@@ -200,7 +200,7 @@ export default function Home() {
         {/* Image Slideshow */}
         <div className="absolute inset-0 bg-gray-200">
           <Image 
-            src={activeHouse.images[0][currentImageIndex]} 
+            src={activeHouse.images[currentImageIndex]} 
             alt={activeHouse.title}
             layout="fill"
             objectFit="cover"
