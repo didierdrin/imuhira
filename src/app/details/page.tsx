@@ -1,3 +1,6 @@
+// page.tsx 
+// This is a copy of /buy/page.tsx
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -36,7 +39,7 @@ interface House {
   isActive: boolean;
 }
 
-export default function BuyPage() {
+export default function SellPage() {
   const [houses, setHouses] = useState<House[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
@@ -105,8 +108,8 @@ export default function BuyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center space-x-2">
-              <Home className="w-8 h-8 text-green-600" />
-              <span className="text-2xl font-bold text-slate-800">iMuhira</span>
+              <Home className="w-8 h-8 text-blue-600" />
+              <span className="text-2xl font-bold text-slate-800">PropertyHub</span>
             </Link>
             
             <div className="hidden md:flex items-center space-x-8">
@@ -133,7 +136,7 @@ export default function BuyPage() {
       </nav>
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-emerald-600 to-green-800 text-white py-16">
+      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Find Your Dream Home</h1>
           <p className="text-xl text-blue-100 mb-8">Browse our exclusive collection of properties for sale</p>
