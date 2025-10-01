@@ -37,7 +37,7 @@ interface House {
   isActive: boolean;
 }
 
-export default function BuyPage() {
+export default function RentPage() {
   const [houses, setHouses] = useState<House[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
