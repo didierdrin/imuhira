@@ -10,7 +10,7 @@ interface House {
   title: string;
   description: string;
   price: number;
-  type: "rent" | "sale";
+  type: "rent" | "buy";
   location: string;
   images: string[];
   likes: number;
@@ -29,7 +29,7 @@ export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentPropertyIndex, setCurrentPropertyIndex] = useState(0);
   const [activeHouse, setActiveHouse] = useState<House | null>(null);
-  const [listingType, setListingType] = useState<"rent" | "sale">("sale");
+  const [listingType, setListingType] = useState<"rent" | "buy">("buy");
 
   const cycleToNextProperty = useCallback(() => {
     setCurrentPropertyIndex((prev) => (prev + 1) % houses.length);
@@ -117,8 +117,8 @@ export default function Home() {
               Rent
             </button>
             <button 
-              className={`${listingType === "sale" ? "text-teal-600" : "text-gray-600"} hover:text-teal-900`}
-              onClick={() => setListingType("sale")}
+              className={`${listingType === "buy" ? "text-teal-600" : "text-gray-600"} hover:text-teal-900`}
+              onClick={() => setListingType("buy")}
             >
               Buy
             </button>
@@ -144,7 +144,7 @@ export default function Home() {
               <p className="text-gray-600">{activeHouse.location}</p>
             </div>
             <button className="px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors">
-              {activeHouse.type === "sale" ? "Buy Now" : "Rent Now"}
+              {activeHouse.type === "buy" ? "Buy Now" : "Rent Now"}
             </button>
           </div>
 
