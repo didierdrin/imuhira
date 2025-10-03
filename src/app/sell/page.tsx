@@ -122,12 +122,10 @@ export default function SellPage() {
               <Link href="/sell" className="text-slate-600 hover:text-slate-800 transition">
                 Sell
               </Link>
-              <Link href="/contact" className="text-slate-600 hover:text-slate-800 transition">
-                Contact
-              </Link>
+              
             </div>
 
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition font-medium">
+            <button className="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition font-medium">
               Sign In
             </button>
           </div>
@@ -293,7 +291,7 @@ function HouseCard({ house, formatPrice }: { house: House; formatPrice: (price: 
               </button>
 
               {house.isFeatured && (
-                <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                <div className="absolute top-4 left-4 bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
                   Featured
                 </div>
               )}
@@ -345,7 +343,7 @@ function HouseCard({ house, formatPrice }: { house: House; formatPrice: (price: 
                 {formatPrice(house.price)}
               </p>
             </div>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition font-medium text-sm">
+            <button className="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition font-medium text-sm">
               View Details
             </button>
           </div>
