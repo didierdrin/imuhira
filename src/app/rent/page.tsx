@@ -106,12 +106,12 @@ export default function RentPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center space-x-2">
-              <Home className="w-8 h-8 text-blue-600" />
+              <Home className="w-8 h-8 text-emerald-600" />
               <span className="text-2xl font-bold text-slate-800">PropertyHub</span>
             </Link>
             
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/buy" className="text-blue-600 font-semibold flex items-center space-x-1">
+              <Link href="/buy" className="text-emerald-600 font-semibold flex items-center space-x-1">
                 <Home className="w-4 h-4" />
                 <span>Buy</span>
               </Link>
@@ -137,7 +137,7 @@ export default function RentPage() {
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Find Your Dream Home</h1>
-          <p className="text-xl text-blue-100 mb-8">Browse our exclusive collection of properties for sale</p>
+          <p className="text-xl text-emerald-100 mb-8">Browse our exclusive collection of properties for sale</p>
           
           {/* Search Bar */}
           <div className="bg-white rounded-xl shadow-2xl p-6">
@@ -202,7 +202,7 @@ export default function RentPage() {
         {/* Loading State */}
         {loading && (
           <div className="flex justify-center items-center py-20">
-            <Loader2 className="w-12 h-12 text-blue-600 animate-spin" />
+            <Loader2 className="w-12 h-12 text-emerald-600 animate-spin" />
           </div>
         )}
 
@@ -307,13 +307,13 @@ function HouseCard({ house, formatPrice }: { house: House; formatPrice: (price: 
         {/* Content */}
         <div className="p-6">
           <div className="flex items-start justify-between mb-3">
-            <h3 className="text-xl font-bold text-slate-800 group-hover:text-blue-600 transition">
+            <h3 className="text-xl font-bold text-slate-800 group-hover:text-emerald-600 transition">
               {house.title}
             </h3>
           </div>
 
           <div className="flex items-center text-slate-600 mb-4">
-            <MapPin className="w-4 h-4 mr-1 text-blue-600" />
+            <MapPin className="w-4 h-4 mr-1 text-emerald-600" />
             <span className="text-sm">{house.location}</span>
           </div>
 
@@ -324,15 +324,15 @@ function HouseCard({ house, formatPrice }: { house: House; formatPrice: (price: 
           {/* Features */}
           <div className="flex items-center justify-between py-4 border-t border-slate-200 mb-4">
             <div className="flex items-center space-x-1 text-slate-700">
-              <Bed className="w-5 h-5 text-blue-600" />
+              <Bed className="w-5 h-5 text-emerald-600" />
               <span className="text-sm font-medium">{house.bedrooms} Beds</span>
             </div>
             <div className="flex items-center space-x-1 text-slate-700">
-              <Bath className="w-5 h-5 text-blue-600" />
+              <Bath className="w-5 h-5 text-emerald-600" />
               <span className="text-sm font-medium">{house.bathrooms} Baths</span>
             </div>
             <div className="flex items-center space-x-1 text-slate-700">
-              <Maximize className="w-5 h-5 text-blue-600" />
+              <Maximize className="w-5 h-5 text-emerald-600" />
               <span className="text-sm font-medium">{house.size} m²</span>
             </div>
           </div>
@@ -340,7 +340,7 @@ function HouseCard({ house, formatPrice }: { house: House; formatPrice: (price: 
           {/* Price */}
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-2xl font-bold text-blue-600">
+              <p className="text-2xl font-bold text-emerald-600">
                 {formatPrice(house.price)}
               </p>
             </div>
