@@ -100,7 +100,7 @@ export default function Home() {
     }
   };
 
-  if (!activeHouse) return <div className="flex min-h-screen w-full items-center">Loading...</div>;
+  if (!activeHouse) return <div className="flex min-h-screen w-full items-center justify-center">Loading...</div>;
 
   return (
     <div className="flex min-h-screen bg-white">
