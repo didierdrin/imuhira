@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { LatLngExpression } from "leaflet";
 
 interface House {
   id: string;
@@ -152,7 +153,15 @@ export default function DetailsPage({ params }: { params: { id: string } }) {
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-2xl overflow-hidden" style={{ height: "400px" }}>
-            <MapContainer
+          <MapContainer
+              center={[house.latitude, house.longitude] as LatLngExpression}
+              zoom={14}
+              style={{ height: "100%", width: "100%" }}
+            >
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+            {/* <MapContainer
               center={[house.latitude, house.longitude]}
               zoom={14}
               style={{ height: "100%", width: "100%" }}
@@ -160,7 +169,7 @@ export default function DetailsPage({ params }: { params: { id: string } }) {
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
-              />
+              /> */}
               <Marker position={[house.latitude, house.longitude]} />
             </MapContainer>
           </div>
