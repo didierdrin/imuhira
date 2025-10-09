@@ -112,6 +112,12 @@ export default function Home() {
         <div className="p-6 border-b flex items-center justify-between">
           <h1 className="text-2xl font-bold">iMuhira</h1>
           <div className="space-x-8">
+          <button 
+              className={`${listingType === "rent" ? "text-teal-600" : "text-gray-600"} hover:text-teal-900`}
+              onClick={() => router.push("/all")}
+            >
+              All
+            </button>
             <button 
               className={`${listingType === "rent" ? "text-teal-600" : "text-gray-600"} hover:text-teal-900`}
               onClick={() => setListingType("rent")}
