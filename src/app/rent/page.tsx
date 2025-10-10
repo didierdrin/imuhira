@@ -120,7 +120,7 @@ export default function RentPage() {
                 
                 <span>Buy</span>
               </Link>
-              <Link href="/rent" className="text-emerald-600 font-semibold">
+              <Link href="/rent" className="underline text-emerald-600 font-semibold">
                 Rent
               </Link>  
               

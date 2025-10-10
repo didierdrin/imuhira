@@ -170,7 +170,7 @@ export default function HomePage() {
               <span>{activeHouse.likes} likes</span>
             </div>
             <div className="text-xl font-bold">
-              RWF{activeHouse.price.toLocaleString()}
+              RWF {activeHouse.price.toLocaleString()}
             </div>
           </div>
 
