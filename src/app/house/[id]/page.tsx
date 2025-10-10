@@ -169,8 +169,8 @@ export default function DetailsPage({ params }: DetailesPageProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      {/* Navigation */}
-      <nav className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+      {/* Fixed Navigation */}
+      <nav className="bg-white border-b border-slate-200 fixed top-0 left-0 right-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center space-x-2">
@@ -204,126 +204,130 @@ export default function DetailsPage({ params }: DetailesPageProps) {
         </div>
       </nav>
 
-      {/* Hero Section with Map */}
-      <div className="bg-gradient-to-r from-emerald-600 to-green-800 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl overflow-hidden" style={{ height: "400px" }}>
-            <MapContainer
-              center={house.latitude && house.longitude ? 
-                [house.latitude, house.longitude] as LatLngExpression : 
-                defaultCenter}
-              zoom={defaultZoom}
-              style={{ height: "100%", width: "100%" }}
-              scrollWheelZoom={false}
-            >
-              <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              />
-              {house.latitude && house.longitude && (
-                <Marker 
-                  position={[house.latitude, house.longitude]} 
-                  icon={customIcon || undefined}
-                >
-                  <Popup>
-                    <div className="p-2">
-                      <h3 className="font-semibold">{house.title}</h3>
-                      <p className="text-sm text-teal-600">{formatPrice(house.price)}</p>
-                      <p className="text-xs text-slate-600">{house.location}</p>
-                    </div>
-                  </Popup>
-                </Marker>
-              )}
-            </MapContainer>
-          </div>
-        </div>
-      </div>
-
-      {/* Rest of your component remains the same */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Left: Image Carousel */}
-          <HouseImageCarousel house={house} />
-
-          {/* Right: Details */}
-          <div>
-            <h1 className="text-3xl font-bold text-slate-800 mb-2">{house.title}</h1>
-            <p className="text-2xl font-bold text-teal-600 mb-4">{formatPrice(house.price)}</p>
-            <div className="flex items-center text-slate-600 mb-4">
-              <MapPin className="w-4 h-4 mr-1 text-teal-600" />
-              <span>{house.location}</span>
-            </div>
-            <div className="flex space-x-6 mb-6">
-              <div className="flex items-center space-x-1 text-slate-700">
-                <Bed className="w-5 h-5 text-teal-600" />
-                <span>{house.bedrooms} Beds</span>
-              </div>
-              <div className="flex items-center space-x-1 text-slate-700">
-                <Bath className="w-5 h-5 text-teal-600" />
-                <span>{house.bathrooms} Baths</span>
-              </div>
-              <div className="flex items-center space-x-1 text-slate-700">
-                <Maximize className="w-5 h-5 text-teal-600" />
-                <span>{house.size} m²</span>
-              </div>
-            </div>
-            <p className="text-slate-600 mb-6">{house.description}</p>
-            <h3 className="text-xl font-semibold text-slate-800 mb-2">Features</h3>
-            <ul className="list-disc pl-5 text-slate-600 mb-6">
-              {house.features.map((feature, index) => (
-                <li key={index}>{feature}</li>
-              ))}
-            </ul>
-
-            {/* Obscured Contacts with Visibility Icon */}
-            <h3 className="text-xl font-semibold text-slate-800 mb-2">Contact Information</h3>
-            <div className="mb-4">
-              <p className="blur-sm text-slate-600">Phone: +250-XXX-XXX-XXX</p>
-              <p className="blur-sm text-slate-600">Email: example@domain.com</p>
-            </div>
-            <button
-              onClick={() => setIsDialogOpen(true)}
-              className="flex items-center space-x-2 bg-teal-600 text-white px-4 py-2 rounded-sm hover:bg-teal-700 transition"
-            >
-              <Eye className="w-5 h-5" />
-              <span>Reveal Contacts</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Suggested Listings */}
-        <div className="mt-12">
-          <h2 className="text-2xl font-bold text-slate-800 mb-6">Suggested Listings</h2>
-          <div className="flex overflow-x-auto space-x-4 pb-4">
-            {suggestedHouses.map((suggestedHouse) => (
-              <div key={suggestedHouse.id} className="flex-shrink-0 w-80">
-                <HouseCard house={suggestedHouse} formatPrice={formatPrice} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Dialog Modal */}
-      {isDialogOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-sm shadow-xl max-w-sm w-full">
-            <h3 className="text-xl font-bold text-slate-800 mb-4">Payment Required</h3>
-            <p className="text-slate-600 mb-6">Pay to view the building details and contacts.</p>
-            <div className="flex justify-end space-x-4">
-              <button
-                onClick={() => setIsDialogOpen(false)}
-                className="px-4 py-2 border border-slate-300 rounded-sm hover:bg-slate-50"
+      {/* Add padding-top to push content below fixed nav */}
+      <div className="pt-16"> {/* This matches the height of the navigation */}
+        
+        {/* Hero Section with Map */}
+        <div className="bg-gradient-to-r from-emerald-600 to-green-800 text-white py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-2xl overflow-hidden" style={{ height: "400px" }}>
+              <MapContainer
+                center={house.latitude && house.longitude ? 
+                  [house.latitude, house.longitude] as LatLngExpression : 
+                  defaultCenter}
+                zoom={defaultZoom}
+                style={{ height: "100%", width: "100%" }}
+                scrollWheelZoom={false}
               >
-                Cancel
-              </button>
-              <button className="bg-teal-600 text-white px-4 py-2 rounded-sm hover:bg-teal-700">
-                Pay {formatPrice(1000)}
-              </button>
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
+                {house.latitude && house.longitude && (
+                  <Marker 
+                    position={[house.latitude, house.longitude]} 
+                    icon={customIcon || undefined}
+                  >
+                    <Popup>
+                      <div className="p-2">
+                        <h3 className="font-semibold">{house.title}</h3>
+                        <p className="text-sm text-teal-600">{formatPrice(house.price)}</p>
+                        <p className="text-xs text-slate-600">{house.location}</p>
+                      </div>
+                    </Popup>
+                  </Marker>
+                )}
+              </MapContainer>
             </div>
           </div>
         </div>
-      )}
+
+        {/* Main Content */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Left: Image Carousel */}
+            <HouseImageCarousel house={house} />
+
+            {/* Right: Details */}
+            <div>
+              <h1 className="text-3xl font-bold text-slate-800 mb-2">{house.title}</h1>
+              <p className="text-2xl font-bold text-teal-600 mb-4">{formatPrice(house.price)}</p>
+              <div className="flex items-center text-slate-600 mb-4">
+                <MapPin className="w-4 h-4 mr-1 text-teal-600" />
+                <span>{house.location}</span>
+              </div>
+              <div className="flex space-x-6 mb-6">
+                <div className="flex items-center space-x-1 text-slate-700">
+                  <Bed className="w-5 h-5 text-teal-600" />
+                  <span>{house.bedrooms} Beds</span>
+                </div>
+                <div className="flex items-center space-x-1 text-slate-700">
+                  <Bath className="w-5 h-5 text-teal-600" />
+                  <span>{house.bathrooms} Baths</span>
+                </div>
+                <div className="flex items-center space-x-1 text-slate-700">
+                  <Maximize className="w-5 h-5 text-teal-600" />
+                  <span>{house.size} m²</span>
+                </div>
+              </div>
+              <p className="text-slate-600 mb-6">{house.description}</p>
+              <h3 className="text-xl font-semibold text-slate-800 mb-2">Features</h3>
+              <ul className="list-disc pl-5 text-slate-600 mb-6">
+                {house.features.map((feature, index) => (
+                  <li key={index}>{feature}</li>
+                ))}
+              </ul>
+
+              {/* Obscured Contacts with Visibility Icon */}
+              <h3 className="text-xl font-semibold text-slate-800 mb-2">Contact Information</h3>
+              <div className="mb-4">
+                <p className="blur-sm text-slate-600">Phone: +250-XXX-XXX-XXX</p>
+                <p className="blur-sm text-slate-600">Email: example@domain.com</p>
+              </div>
+              <button
+                onClick={() => setIsDialogOpen(true)}
+                className="flex items-center space-x-2 bg-teal-600 text-white px-4 py-2 rounded-sm hover:bg-teal-700 transition"
+              >
+                <Eye className="w-5 h-5" />
+                <span>Reveal Contacts</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Suggested Listings */}
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold text-slate-800 mb-6">Suggested Listings</h2>
+            <div className="flex overflow-x-auto space-x-4 pb-4">
+              {suggestedHouses.map((suggestedHouse) => (
+                <div key={suggestedHouse.id} className="flex-shrink-0 w-80">
+                  <HouseCard house={suggestedHouse} formatPrice={formatPrice} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Dialog Modal */}
+        {isDialogOpen && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+            <div className="bg-white p-6 rounded-sm shadow-xl max-w-sm w-full">
+              <h3 className="text-xl font-bold text-slate-800 mb-4">Payment Required</h3>
+              <p className="text-slate-600 mb-6">Pay to view the building details and contacts.</p>
+              <div className="flex justify-end space-x-4">
+                <button
+                  onClick={() => setIsDialogOpen(false)}
+                  className="px-4 py-2 border border-slate-300 rounded-sm hover:bg-slate-50"
+                >
+                  Cancel
+                </button>
+                <button className="bg-teal-600 text-white px-4 py-2 rounded-sm hover:bg-teal-700">
+                  Pay {formatPrice(1000)}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -494,7 +498,6 @@ function HouseCard({ house, formatPrice }: { house: House; formatPrice: (price: 
     </Link>
   );
 }
-
 
 // "use client";
 
