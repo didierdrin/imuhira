@@ -17,12 +17,14 @@ import {
   ChevronLeft,
   ChevronRight,
   Loader2,
-  Eye
+  Eye,
+  Router
 } from "lucide-react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { LatLngExpression } from "leaflet";
+import { useRouter } from "next/router";
 
 // Fix for default markers in react-leaflet
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -184,10 +186,10 @@ export default function DetailsPage({ params }: DetailesPageProps) {
             </Link>
             
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/buy" className="text-slate-600 hover:text-slate-800 transition">
+              <Link href="/buy" className="text-slate-600 hover:text-slate-800 hover:underline transition">
                 <span>Buy</span>
               </Link>
-              <Link href="/rent" className="text-slate-600 hover:text-slate-800 transition">
+              <Link href="/rent" className="text-slate-600 hover:text-slate-800 hover:underline transition">
                 Rent
               </Link>  
             </div>
