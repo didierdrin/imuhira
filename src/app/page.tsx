@@ -229,7 +229,7 @@ export default function HomePage() {
           <div className="flex items-center gap-4 text-white ml-4">
             <button className="hover:text-gray-200">Login</button>
             <button className="hover:text-gray-200">Sign Up</button>
-            <UserCircle />
+            {/* <UserCircle /> */}
           </div>
         </div>
 
