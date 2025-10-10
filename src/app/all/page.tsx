@@ -115,7 +115,7 @@ export default function AllPage() {
             </Link>
             
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/buy" className="text-emerald-600 font-semibold flex items-center space-x-1">
+              <Link href="/buy" className="underline text-emerald-600 font-semibold flex items-center space-x-1">
                 
                 <span>Buy</span>
               </Link>
