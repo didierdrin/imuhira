@@ -106,39 +106,46 @@ export default function RentPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center space-x-2">
-              <Home className="w-8 h-8 text-emerald-600" />
-              <span className="text-2xl font-bold text-slate-800">PropertyHub</span>
+              <Home className="w-8 h-8 text-green-600" />
+              <span className="flex">
+          <b className="text-2xl font-bold text-green-500">i</b>
+        <h1 className="text-2xl font-bold bg-gradient-to-r from-green-400 to-emerald-900 bg-clip-text text-transparent">
+  Muhira
+</h1> </span>
+              {/* <span className="text-2xl font-bold text-slate-800">iMuhira</span> */}
             </Link>
             
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/buy" className="text-emerald-600 font-semibold flex items-center space-x-1">
-                <Home className="w-4 h-4" />
+              <Link href="/buy" className="text-slate-600 hover:text-slate-800 transition flex items-center space-x-1">
+                
                 <span>Buy</span>
               </Link>
-              <Link href="/rent" className="text-slate-600 hover:text-slate-800 transition">
+              <Link href="/rent" className="text-emerald-600 font-semibold">
                 Rent
-              </Link>
-              <Link href="/sell" className="text-slate-600 hover:text-slate-800 transition">
-                Sell
-              </Link>
+              </Link>  
               
             </div>
 
-            <button className="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition font-medium">
+            <div className="flex space-x-1">
+            <button className="bg-white text-slate-600 px-6 py-2 rounded-sm border border-slate-400  hover:bg-slate-700 hover:text-white transition font-medium">
               Sign In
             </button>
+            <button className="bg-emerald-600 text-white px-6 py-2 rounded-sm hover:bg-emerald-700 transition font-medium">
+              Sign Up
+            </button>
+            </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+      <div className="bg-gradient-to-r from-emerald-600 to-green-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Find Your Dream Home</h1>
-          <p className="text-xl text-emerald-100 mb-8">Browse our exclusive collection of properties for sale</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Rent Your Dream Home</h1>
+          <p className="text-xl text-emerald-100 mb-8">Browse our exclusive collection of properties for rent</p>
           
           {/* Search Bar */}
-          <div className="bg-white rounded-xl shadow-2xl p-6">
+          <div className="bg-white rounded-sm shadow-2xl p-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="md:col-span-2 relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
@@ -147,14 +154,14 @@ export default function RentPage() {
                   placeholder="Search by location or title..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-800"
+                  className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-800"
                 />
               </div>
               
               <select
                 value={priceRange}
                 onChange={(e) => setPriceRange(e.target.value)}
-                className="px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-800"
+                className="px-4 py-3 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-800"
               >
                 <option value="all">All Prices</option>
                 <option value="0-100m">Under 100M RWF</option>
@@ -165,7 +172,7 @@ export default function RentPage() {
               <select
                 value={bedrooms}
                 onChange={(e) => setBedrooms(e.target.value)}
-                className="px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-800"
+                className="px-4 py-3 border border-slate-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-800"
               >
                 <option value="all">All Bedrooms</option>
                 <option value="1">1 Bedroom</option>
@@ -177,6 +184,7 @@ export default function RentPage() {
           </div>
         </div>
       </div>
+
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -191,7 +199,7 @@ export default function RentPage() {
             </p>
           </div>
           
-          <button className="flex items-center space-x-2 px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-50 transition">
+          <button className="flex items-center space-x-2 px-4 py-2 border border-slate-300 rounded-sm hover:bg-slate-50 transition">
             <SlidersHorizontal className="w-5 h-5 text-slate-600" />
             <span className="text-slate-700">Filters</span>
           </button>
@@ -342,7 +350,7 @@ function HouseCard({ house, formatPrice }: { house: House; formatPrice: (price: 
                 {formatPrice(house.price)}
               </p>
             </div>
-            <button className="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition font-medium text-sm">
+            <button className="bg-emerald-600 text-white px-4 py-2 rounded-sm hover:bg-emerald-700 transition font-medium text-sm">
               View Details
             </button>
           </div>

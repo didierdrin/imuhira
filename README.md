@@ -1,3 +1,7 @@
+1. Google Map
+2. House Images
+3. Interior 3d
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

@@ -159,7 +159,7 @@ export default function DetailsPage({ params }: DetailesPageProps) {
               </Link>
             </div>
 
-            <button className="bg-teal-600 text-white px-6 py-2 rounded-lg hover:bg-teal-700 transition font-medium">
+            <button className="bg-teal-600 text-white px-6 py-2 rounded-sm hover:bg-teal-700 transition font-medium">
               Sign In
             </button>
           </div>
@@ -167,7 +167,7 @@ export default function DetailsPage({ params }: DetailesPageProps) {
       </nav>
 
       {/* Hero Section with Map */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+      <div className="bg-gradient-to-r from-emerald-600 to-green-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-2xl overflow-hidden" style={{ height: "400px" }}>
             <MapContainer
@@ -229,7 +229,7 @@ export default function DetailsPage({ params }: DetailesPageProps) {
             </div>
             <button
               onClick={() => setIsDialogOpen(true)}
-              className="flex items-center space-x-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition"
+              className="flex items-center space-x-2 bg-teal-600 text-white px-4 py-2 rounded-sm hover:bg-teal-700 transition"
             >
               <Eye className="w-5 h-5" />
               <span>Reveal Contacts</span>
@@ -253,17 +253,17 @@ export default function DetailsPage({ params }: DetailesPageProps) {
       {/* Dialog Modal */}
       {isDialogOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full">
+          <div className="bg-white p-6 rounded-sm shadow-xl max-w-sm w-full">
             <h3 className="text-xl font-bold text-slate-800 mb-4">Payment Required</h3>
             <p className="text-slate-600 mb-6">Pay to view the building details and contacts.</p>
             <div className="flex justify-end space-x-4">
               <button
                 onClick={() => setIsDialogOpen(false)}
-                className="px-4 py-2 border border-slate-300 rounded-lg hover:bg-slate-50"
+                className="px-4 py-2 border border-slate-300 rounded-sm hover:bg-slate-50"
               >
                 Cancel
               </button>
-              <button className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700">
+              <button className="bg-teal-600 text-white px-4 py-2 rounded-sm hover:bg-teal-700">
                 Pay {formatPrice(1000)}
               </button>
             </div>
