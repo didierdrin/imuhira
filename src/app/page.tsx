@@ -119,13 +119,13 @@ export default function HomePage() {
     setCurrentImageIndex(0);
   }, [currentBuyPropertyIndex, currentRentPropertyIndex, buyHouses, rentHouses, listingType]);
 
-  // Auto-cycle left column properties every 5 seconds
+  // Auto-cycle left column properties every 4 seconds
   useEffect(() => {
     const propertyTimer = setInterval(cycleToNextLeftProperty, 4000);
     return () => clearInterval(propertyTimer);
   }, [cycleToNextLeftProperty]);
 
-  // Auto-cycle right column properties every 5 seconds
+  // Auto-cycle right column properties every 7 seconds
   useEffect(() => {
     const propertyTimer = setInterval(cycleToNextRightProperty, 7000);
     return () => clearInterval(propertyTimer);
