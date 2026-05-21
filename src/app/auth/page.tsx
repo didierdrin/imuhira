@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../firebaseApp';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { Home, Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff } from 'lucide-react';
+import { BrandLogo } from '@/components/BrandLogo';
 
 export default function AuthPage() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -50,15 +50,7 @@ export default function AuthPage() {
       <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8">
         {/* Header with Logo */}
         <div className="flex items-center justify-between mb-8">
-          <Link href="/" className="flex items-center space-x-2">
-            <Home className="w-8 h-8 text-green-600" />
-            <span className="flex">
-              <b className="text-2xl font-bold text-green-500">i</b>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-green-400 to-emerald-900 bg-clip-text text-transparent">
-                Muhira
-              </h1>
-            </span>
-          </Link>
+          <BrandLogo />
         </div>
 
         {/* Toggle between Sign In and Sign Up */}

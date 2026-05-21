@@ -7,6 +7,7 @@ import { collection, query, where, getDocs, orderBy } from "firebase/firestore";
 import { firestore as db } from "../../../firebaseApp";
 import Link from "next/link";
 import Image from "next/image";
+import { SiteNav } from "@/components/SiteNav";
 import { 
   Home, 
   Search, 
@@ -102,42 +103,7 @@ export default function SellPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      {/* Navigation */}
-      <nav className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center space-x-2">
-              <Home className="w-8 h-8 text-green-600" />
-              <span className="flex">
-          <b className="text-2xl font-bold text-green-500">i</b>
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-green-400 to-emerald-900 bg-clip-text text-transparent">
-  Muhira
-</h1> </span>
-              {/* <span className="text-2xl font-bold text-slate-800">iMuhira</span> */}
-            </Link>
-            
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/buy" className="text-emerald-600 font-semibold flex items-center space-x-1">
-                
-                <span>Buy</span>
-              </Link>
-              <Link href="/rent" className="text-slate-600 hover:text-slate-800 transition">
-                Rent
-              </Link>  
-              
-            </div>
-
-            <div className="flex space-x-1">
-            <button className="bg-white text-slate-600 px-6 py-2 rounded-sm border border-slate-400  hover:bg-slate-700 hover:text-white transition font-medium">
-              Sign In
-            </button>
-            <button className="bg-emerald-600 text-white px-6 py-2 rounded-sm hover:bg-emerald-700 transition font-medium">
-              Sign Up
-            </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteNav active="buy" />
 
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-emerald-600 to-green-800 text-white py-16">

@@ -17,6 +17,11 @@ export const metadata: Metadata = {
   description: "#1 Real estate platform",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{

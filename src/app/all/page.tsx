@@ -5,6 +5,7 @@ import { collection, query, where, getDocs, orderBy } from "firebase/firestore";
 import { firestore as db } from "../../../firebaseApp";
 import Link from "next/link";
 import Image from "next/image";
+import { SiteNav } from "@/components/SiteNav";
 import { 
   Home, 
   Search, 
@@ -100,49 +101,16 @@ export default function AllPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      {/* Navigation */}
-      <nav className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center space-x-2">
-              <Home className="w-8 h-8 text-green-600" />
-              <span className="flex">
-                <b className="text-2xl font-bold text-green-500">i</b>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-green-400 to-emerald-900 bg-clip-text text-transparent">
-                  Muhira
-                </h1>
-              </span>
-            </Link>
-            
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/buy" className="underline text-emerald-600 font-semibold flex items-center space-x-1">
-                <span>Buy</span>
-              </Link>
-              <Link href="/rent" className="text-slate-600 hover:text-slate-800 transition">
-                Rent
-              </Link>  
-            </div>
-
-            <div className="flex space-x-1">
-              <button className="bg-white text-slate-600 px-6 py-2 rounded-sm border border-slate-400 hover:bg-slate-700 hover:text-white transition font-medium">
-                Sign In
-              </button>
-              <button className="bg-emerald-600 text-white px-6 py-2 rounded-sm hover:bg-emerald-700 transition font-medium">
-                Sign Up
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteNav active="buy" />
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-emerald-600 to-green-800 text-white py-16">
+      <div className="bg-gradient-to-r from-emerald-600 to-green-800 text-white py-10 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Find Your Dream Home</h1>
-          <p className="text-xl text-emerald-100 mb-8">Browse our exclusive collection of properties for sale</p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Find Your Dream Home</h1>
+          <p className="text-base sm:text-xl text-emerald-100 mb-6 sm:mb-8">Browse our exclusive collection of properties for sale</p>
           
           {/* Search Bar */}
-          <div className="bg-white rounded-sm shadow-2xl p-6">
+          <div className="bg-white rounded-sm shadow-2xl p-4 sm:p-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="md:col-span-2 relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
@@ -185,9 +153,9 @@ export default function AllPage() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Results Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
-            <h2 className="text-2xl font-bold text-slate-800">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-800">
               Available Properties for Sale
             </h2>
             <p className="text-slate-600 mt-1">
@@ -340,9 +308,9 @@ function HouseCard({ house, formatPrice }: { house: House; formatPrice: (price: 
           </div>
 
           {/* Price */}
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
-              <p className="text-2xl font-bold text-emerald-600">
+              <p className="text-xl sm:text-2xl font-bold text-emerald-600">
                 {formatPrice(house.price)}
               </p>
               <p className="text-sm text-slate-500">For Sale</p>

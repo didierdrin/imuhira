@@ -5,6 +5,7 @@ import { doc, getDoc, collection, query, where, getDocs, orderBy, limit } from "
 import { firestore as db } from "../../../../firebaseApp";
 import Link from "next/link";
 import Image from "next/image";
+import { SiteNav } from "@/components/SiteNav";
 import { 
   Home, 
   Search, 
@@ -171,48 +172,17 @@ export default function DetailsPage({ params }: DetailesPageProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      {/* Fixed Navigation */}
-      <nav className="bg-white border-b border-slate-200 fixed top-0 left-0 right-0 z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center space-x-2">
-              <Home className="w-8 h-8 text-green-600" />
-              <span className="flex">
-                <b className="text-2xl font-bold text-green-500">i</b>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-green-400 to-emerald-900 bg-clip-text text-transparent">
-                  Muhira
-                </h1>
-              </span>
-            </Link>
-            
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/buy" className="text-slate-600 hover:text-slate-800 hover:underline transition">
-                <span>Buy</span>
-              </Link>
-              <Link href="/rent" className="text-slate-600 hover:text-slate-800 hover:underline transition">
-                Rent
-              </Link>  
-            </div>
-
-            <div className="flex space-x-1">
-              <button className="bg-white text-slate-600 px-6 py-2 rounded-sm border border-slate-400 hover:bg-slate-700 hover:text-white transition font-medium">
-                Sign In
-              </button>
-              <button className="bg-emerald-600 text-white px-6 py-2 rounded-sm hover:bg-emerald-700 transition font-medium">
-                Sign Up
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <SiteNav />
+      </div>
 
       {/* Add padding-top to push content below fixed nav */}
       <div className="pt-16"> {/* This matches the height of the navigation */}
         
         {/* Hero Section with Map */}
-        <div className="bg-gradient-to-r from-emerald-600 to-green-800 text-white py-16">
+        <div className="bg-gradient-to-r from-emerald-600 to-green-800 text-white py-10 sm:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-2xl overflow-hidden" style={{ height: "400px" }}>
+            <div className="rounded-2xl overflow-hidden h-[250px] sm:h-[350px] lg:h-[400px]">
               <MapContainer
                 center={house.latitude && house.longitude ? 
                   [house.latitude, house.longitude] as LatLngExpression : 
@@ -252,13 +222,13 @@ export default function DetailsPage({ params }: DetailesPageProps) {
 
             {/* Right: Details */}
             <div>
-              <h1 className="text-3xl font-bold text-slate-800 mb-2">{house.title}</h1>
-              <p className="text-2xl font-bold text-teal-600 mb-4">{formatPrice(house.price)}</p>
+              <h1 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-2">{house.title}</h1>
+              <p className="text-xl sm:text-2xl font-bold text-teal-600 mb-4">{formatPrice(house.price)}</p>
               <div className="flex items-center text-slate-600 mb-4">
                 <MapPin className="w-4 h-4 mr-1 text-teal-600" />
                 <span>{house.location}</span>
               </div>
-              <div className="flex space-x-6 mb-6">
+              <div className="flex flex-wrap gap-4 sm:gap-6 mb-6">
                 <div className="flex items-center space-x-1 text-slate-700">
                   <Bed className="w-5 h-5 text-teal-600" />
                   <span>{house.bedrooms} Beds</span>
@@ -301,7 +271,7 @@ export default function DetailsPage({ params }: DetailesPageProps) {
             <h2 className="text-2xl font-bold text-slate-800 mb-6">Suggested Listings</h2>
             <div className="flex overflow-x-auto space-x-4 pb-4">
               {suggestedHouses.map((suggestedHouse) => (
-                <div key={suggestedHouse.id} className="flex-shrink-0 w-80">
+                <div key={suggestedHouse.id} className="flex-shrink-0 w-[85vw] sm:w-80">
                   <HouseCard house={suggestedHouse} formatPrice={formatPrice} />
                 </div>
               ))}
@@ -349,7 +319,7 @@ function HouseImageCarousel({ house }: { house: House }) {
   };
 
   return (
-    <div className="relative h-96 bg-slate-200 overflow-hidden rounded-2xl">
+    <div className="relative h-64 sm:h-80 lg:h-96 bg-slate-200 overflow-hidden rounded-2xl">
       {house.images && house.images.length > 0 ? (
         <>
           <Image
