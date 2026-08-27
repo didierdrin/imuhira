@@ -3,9 +3,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { getStorage } from "firebase/storage"; 
-
-
 const firebaseConfig = {
   apiKey: "AIzaSyDlfeVwzbjeM2oxK6XL2hmDAyB-y-FMNLM",
   authDomain: "passtrack-3e434.firebaseapp.com",
@@ -20,7 +17,6 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 export const firestore = getFirestore(app);
-export const storage = getStorage(app);
 
 
 

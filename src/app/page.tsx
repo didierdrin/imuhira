@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
+import { PropertyImage } from "@/components/PropertyImage";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { firestore as db } from "../../firebaseApp";
 import { ChevronLeft, ChevronRight, Heart, Search } from "lucide-react";
@@ -222,11 +222,11 @@ export default function HomePage() {
           {/* Other House Preview */}
           <div className="relative rounded-sm overflow-hidden h-[240px] sm:h-[320px] lg:h-[400px] bg-gray-100">
             <div className="absolute inset-0">
-              <Image 
-                src={activeLeftHouse.images[currentImageIndex]} 
+              <PropertyImage
+                src={activeLeftHouse.images[currentImageIndex]}
                 alt={activeLeftHouse.title}
-                layout="fill"
-                objectFit="cover"
+                fill
+                className="object-cover"
               />
             </div>
             <div className="absolute inset-0 flex items-center justify-between p-4 z-10">
@@ -293,13 +293,12 @@ export default function HomePage() {
         {/* Image Slideshow */}
         <div className="absolute inset-0 bg-gray-200 overflow-hidden">
           {activeRightHouse && (
-            <Image 
+            <PropertyImage
               key={activeRightHouse.id}
-              src={activeRightHouse.images[0]} 
+              src={activeRightHouse.images[0]}
               alt={activeRightHouse.title}
-              layout="fill"
-              objectFit="cover"
-              className="transition-all duration-500 ease-in-out"
+              fill
+              className="object-cover transition-all duration-500 ease-in-out"
             />
           )}
           <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/50 to-transparent text-white">

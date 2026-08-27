@@ -4,7 +4,7 @@ import { DetailedHTMLProps, useEffect, useState } from "react";
 import { doc, getDoc, collection, query, where, getDocs, orderBy, limit } from "firebase/firestore";
 import { firestore as db } from "../../../../firebaseApp";
 import Link from "next/link";
-import Image from "next/image";
+import { PropertyImage } from "@/components/PropertyImage";
 import { SiteNav } from "@/components/SiteNav";
 import { 
   Home, 
@@ -40,10 +40,9 @@ const createCustomIcon = (iconUrl: string) => {
   return new L.Icon({
     iconUrl: iconUrl,
     iconRetinaUrl: iconUrl,
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    shadowSize: [41, 41]
+    iconSize: [46, 46],
+    iconAnchor: [23, 46],
+    popupAnchor: [0, -40],
   });
 };
 
@@ -182,7 +181,7 @@ export default function DetailsPage({ params }: DetailesPageProps) {
         {/* Hero Section with Map */}
         <div className="bg-gradient-to-r from-emerald-600 to-green-800 text-white py-10 sm:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-2xl overflow-hidden h-[250px] sm:h-[350px] lg:h-[400px]">
+            <div className="relative isolate z-0 rounded-2xl overflow-hidden h-[350px] sm:h-[450px] lg:h-[550px]">
               <MapContainer
                 center={house.latitude && house.longitude ? 
                   [house.latitude, house.longitude] as LatLngExpression : 
@@ -322,7 +321,7 @@ function HouseImageCarousel({ house }: { house: House }) {
     <div className="relative h-64 sm:h-80 lg:h-96 bg-slate-200 overflow-hidden rounded-2xl">
       {house.images && house.images.length > 0 ? (
         <>
-          <Image
+          <PropertyImage
             src={house.images[currentImageIndex]}
             alt={house.title}
             fill
@@ -387,7 +386,7 @@ function HouseCard({ house, formatPrice }: { house: House; formatPrice: (price: 
         <div className="relative h-48 bg-slate-200 overflow-hidden">
           {house.images && house.images.length > 0 ? (
             <>
-              <Image
+              <PropertyImage
                 src={house.images[currentImageIndex]}
                 alt={house.title}
                 fill

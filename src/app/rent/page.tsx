@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { collection, query, where, getDocs, orderBy } from "firebase/firestore";
 import { firestore as db } from "../../../firebaseApp";
 import Link from "next/link";
-import Image from "next/image";
+import { PropertyImage } from "@/components/PropertyImage";
 import { SiteNav } from "@/components/SiteNav";
 import { 
   Home, 
@@ -216,7 +216,7 @@ function HouseCard({ house, formatPrice }: { house: House; formatPrice: (price: 
         <div className="relative h-64 bg-slate-200 overflow-hidden">
           {house.images && house.images.length > 0 ? (
             <>
-              <Image
+              <PropertyImage
                 src={house.images[currentImageIndex]}
                 alt={house.title}
                 fill
